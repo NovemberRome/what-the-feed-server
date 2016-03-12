@@ -26,7 +26,7 @@ class UserSubscription(models.Model):
     searchParam = models.CharField(max_length=100)
 
     def __str__(self):
-        return 'Subscription for ' + self.searchParam + ' by user ' + self.user.username
+        return 'Subscription for ' + self.searchParam + ' by user ' + self.user.username + ' subid ' + str(self.id)
 
 
 class SubscriptionLink(models.Model):

@@ -8,7 +8,7 @@ def auth_failed(code = 302, msg = 'Authentication Problem'):
 def invalid_option(code = 404, msg = 'Invalid Option'):
     return send_response(code, msg)
 
-def send_response(code = 200, msg = 'Invalid Option'):
+def send_response(code = 200, msg = 'OK'):
     data = {
         'status': code,
         'message': msg

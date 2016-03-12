@@ -37,7 +37,8 @@ def addSubscription(request):
         sub.save()
     except Exception as e:
         print(e)
-    return functions.invalid_option()
+        return functions.auth_failed()
+    return functions.send_response()
 
 
 """

@@ -62,4 +62,7 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
+#----------------------------------------------------------
+
 *.sqlite3
+auth.py

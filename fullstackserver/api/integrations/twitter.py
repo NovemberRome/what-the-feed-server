@@ -5,7 +5,7 @@ from auth import AUTH
 
 class TwitterFeed:
 
-    name = 'username'
+    name = 'aviaryan123'
 
     def __init__(self, username):
         self.name = username

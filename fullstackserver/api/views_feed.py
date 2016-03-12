@@ -3,7 +3,7 @@ from django.shortcuts import render
 import json
 from django.views.decorators.csrf import csrf_exempt
 from . import functions
-from . import models
+from .models import *
 
 """
 Gets the Main feed for an user
@@ -27,6 +27,16 @@ Requires authentication
 """
 @csrf_exempt
 def addSubscription(request):
+    if request.method != 'POST':
+        return functions.invalid_option()
+    uid = request.POST.get('id')
+    password = request.POST.get('password')
+    searchParam = request.POST.get('searchparam')
+    try:
+        sub = UserSubscription(user=User.objects.get(id = uid, password=password), searchParam=searchParam)
+        sub.save()
+    except Exception as e:
+        print(e)
     return functions.invalid_option()
 
 

@@ -15,7 +15,7 @@ class User(models.Model):
 
 class Link(models.Model):
     pid = models.AutoField(primary_key=True)
-    link = models.TextField()
+    url = models.TextField()
     network = models.IntegerField()
     name = models.CharField(max_length=50)
 
@@ -23,7 +23,7 @@ class Link(models.Model):
 class UserSubscription(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    query = models.CharField(max_length=100)
+    searchParam = models.CharField(max_length=100)
 
 
 class SubscriptionLink(models.Model):

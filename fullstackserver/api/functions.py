@@ -8,9 +8,29 @@ def auth_failed(code = 302, msg = 'Authentication Problem'):
 def invalid_option(code = 404, msg = 'Invalid Option'):
     return send_response(code, msg)
 
+def error_happened(code = 400, msg = 'Bad things have happened'):
+    return send_response(code, msg)
+
 def send_response(code = 200, msg = 'OK'):
     data = {
         'status': code,
         'message': msg
     }
-    return HttpResponse(json.dumps(data), content_type='application/json')
+    a = Response(code)
+    a.add('message', msg)
+    return a.respond()
+
+"""
+Return a
+Response
+"""
+class Response:
+    json = {}
+    def __init__(self, code=200):
+        self.json['code'] = code
+
+    def add(self, key, value):
+        self.json[key] = value
+
+    def respond(self):
+        return HttpResponse(json.dumps(self.json), content_type='application/json')

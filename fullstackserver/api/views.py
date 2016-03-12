@@ -41,8 +41,12 @@ def register(request):
                     firstName = firstName, lastName = lastName)
             user.save()
             id = user.id
+            resp = functions.Response()
+            resp.add('username', username)
+            resp.add('id', id)
+            return resp.respond()
         except Exception as e:
             print(e)
-        return HttpResponse(json.dumps({'username': username, 'id': id}), content_type='application/json')
+            functions.error_happened()
     else:
         return functions.invalid_option()

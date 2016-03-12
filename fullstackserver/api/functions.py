@@ -12,10 +12,6 @@ def error_happened(code = 400, msg = 'Bad things have happened'):
     return send_response(code, msg)
 
 def send_response(code = 200, msg = 'OK'):
-    data = {
-        'status': code,
-        'message': msg
-    }
     a = Response(code)
     a.add('message', msg)
     return a.respond()
@@ -25,8 +21,8 @@ Return a
 Response
 """
 class Response:
-    json = {}
     def __init__(self, code=200):
+        self.json = {}
         self.json['code'] = code
 
     def add(self, key, value):

@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://localhost/api/'
+url = 'http://10.100.2.81:5123/api/'
 
 def register():
     r = requests.post(url + 'register', data = {'username': 'aviaryan', 'password': 'something', 'email': 'avi@aryan.com'})

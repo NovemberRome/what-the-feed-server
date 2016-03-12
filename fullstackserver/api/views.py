@@ -16,8 +16,9 @@ def login(request):
         password = request.POST.get('password')
         user = models.User.objects.filter(username=username, password=password)
         if len(user) == 1:
-            return HttpResponse(json.dumps({'success': 'true'}), content_type='application/json')
-            # TODO: return back more data
+            resp = functions.Response()
+            resp.add('subscriptions', [])
+            return resp.respond()
         else:
             return functions.auth_failed()
     else:
@@ -46,6 +47,6 @@ def register(request):
             return resp.respond()
         except Exception as e:
             print(e)
-            functions.error_happened()
+            return functions.error_happened()
     else:
         return functions.invalid_option()

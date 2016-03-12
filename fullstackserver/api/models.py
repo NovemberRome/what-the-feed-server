@@ -17,6 +17,7 @@ class Link(models.Model):
     pid = models.AutoField(primary_key=True)
     link = models.TextField()
     network = models.IntegerField()
+    name = models.CharField(max_length=50)
 
 
 class UserSubscription(models.Model):

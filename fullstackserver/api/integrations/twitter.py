@@ -1,6 +1,10 @@
 import tweepy
-from auth import AUTH
-# from .auth import AUTH
+try:
+    from .auth import AUTH
+    from .utils import *
+except SystemError:
+    from auth import AUTH
+    from utils import *
 # TODO: Fix tweet with image
 
 class TwitterFeed:
@@ -19,7 +23,7 @@ class TwitterFeed:
         for i in new_tweets:
             ret.append({
                 'text': i.text,
-                'time': i.created_at,
+                'time': str(i.created_at), # tweepy already takes care of that
                 'imageUrl': None,
                 'url': 'https://twitter.com/statuses/' + i.id_str
             })

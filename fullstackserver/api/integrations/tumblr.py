@@ -4,9 +4,13 @@
 # http://api.tumblr.com/v2/blog/myblog.tumblr.com/info?api_key=hjvdX6OC5x958s4S2AqQEdNo8w2DmWFWHBDNXXyJ26ru5bnYFd
 
 import requests
-from auth import AUTH
 import json
-# from .auth import AUTH
+try:
+    from .auth import AUTH
+    from .utils import *
+except SystemError:
+    from auth import AUTH
+    from utils import *
 
 class TumblrFeed:
 
@@ -27,7 +31,7 @@ class TumblrFeed:
         for i in posts:
             ret.append({
                 'text': i['body'],
-                'time': i['date'],
+                'time': timeToStr(i['date']),
                 'imageUrl': None,
                 'url': i['post_url']
             })

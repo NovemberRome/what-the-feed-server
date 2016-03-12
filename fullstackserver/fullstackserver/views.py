@@ -5,5 +5,5 @@ import json
 
 def test_view(request):
     data = {'avi': 'aryan', 'pratyush': 'singh'}
-    return HttpResponse(data, content_type='application/json')
+    return HttpResponse(json.dumps(data), content_type='application/json')
     #return render(request, 'simpleview.html', {'data': 'awesome'})

@@ -13,17 +13,15 @@ def login(request):
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        email = request.POST.get('email', '')
-        firstName = request.POST.get('firstname', '')
-        lastName = request.POST.get('lastname', '')
-        #render(request, 'simpleview.html', {username : 'value'})
+        username = request.POST.get('username') # None default if no second param
+        password = request.POST.get('password')
+        email = request.POST.get('email')
+        firstName = request.POST.get('firstname')
+        lastName = request.POST.get('lastname')
         id = -1
-
         try:
             user = models.User(username = username, password = password, email=email,
-                                       firstName = firstName, lastName = lastName)
+                    firstName = firstName, lastName = lastName)
             user.save()
             id = user.id
         except Exception as e:

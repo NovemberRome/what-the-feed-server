@@ -3,11 +3,11 @@ from django.utils import timezone
 
 class User(models.Model):
     id = models.AutoField(primary_key=True)
-    password = models.CharField(null=False, max_length=100)
-    username = models.CharField(max_length=20, null=False)
-    email = models.EmailField()
-    firstName = models.CharField(max_length=30)
-    lastName = models.CharField(max_length=30)
+    password = models.CharField(max_length=100)
+    username = models.CharField(max_length=20, unique=True)
+    email = models.EmailField(unique=True)
+    firstName = models.CharField(max_length=30, null=True)
+    lastName = models.CharField(max_length=30, null=True)
 
     def __str__(self):
         return 'User ' + self.username + ' and ID ' + str(self.id)

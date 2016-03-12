@@ -1,3 +1,3 @@
-# Server for fullstack's project @ Hackathon
+# Server for FullStack's Hackathon project
 
-Built on Django.
+Built in Django

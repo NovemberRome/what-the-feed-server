@@ -9,3 +9,10 @@
 },
 ]
 """
+
+class TwitterFeed():
+
+    name = 'username'
+
+    def getFeeds(self):
+        pass

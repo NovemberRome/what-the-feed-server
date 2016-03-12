@@ -10,7 +10,7 @@ class User(models.Model):
     lastName = models.CharField(max_length=30)
 
     def __str__(self):
-        return 'User ' + self.username + ' and ID ' + self.id
+        return 'User ' + self.username + ' and ID ' + str(self.id)
 
 
 class Link(models.Model):

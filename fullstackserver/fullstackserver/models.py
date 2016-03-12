@@ -20,12 +20,12 @@ class Link(models.Model):
 
 
 class SearchString(models.Model):
-    id = models.ForeignKey(User, on_delete='cascade')
-    pid = models.ForeignKey(Link, on_delete='cascade')
+    id = models.ForeignKey(User, on_delete=models.CASCADE)
+    pid = models.ForeignKey(Link, on_delete=models.CASCADE)
     query = models.CharField()
 
 
 class Cache(models.Model):
-    pid = models.ForeignKey(Link, on_delete='cascade')
+    pid = models.ForeignKey(Link, on_delete=models.CASCADE)
     data = models.TextField()
     expiry = models.DateTimeField()

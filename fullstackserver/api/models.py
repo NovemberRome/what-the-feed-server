@@ -10,7 +10,7 @@ class User(models.Model):
     lastName = models.CharField(max_length=30, null=True)
 
     def __str__(self):
-        return 'User ' + self.username + ' and ID ' + str(self.id)
+        return 'username ' + self.username + ' with id ' + str(self.id)
 
 
 class Link(models.Model):
@@ -24,6 +24,9 @@ class UserSubscription(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     searchParam = models.CharField(max_length=100)
+
+    def __str__(self):
+        return 'Subscription for ' + self.searchParam + ' by user ' + self.user.username
 
 
 class SubscriptionLink(models.Model):

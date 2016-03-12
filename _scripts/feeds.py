@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://localhost/api/feed'
+url = 'http://localhost/api/feed/'
 
 def addsubs():
     r = requests.post(url + 'addsubscription', data = {'id': 1, 'password': 'something', 'searchparam': 'Batman vs Superman'})

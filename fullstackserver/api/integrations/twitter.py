@@ -3,7 +3,7 @@ from auth import AUTH
 # from .auth import AUTH
 # TODO: Fix tweet with image
 
-class TwitterFeed():
+class TwitterFeed:
 
     name = 'username'
 
@@ -14,7 +14,7 @@ class TwitterFeed():
         auth = tweepy.OAuthHandler(AUTH.TWITTER_CONS_KEY, AUTH.TWITTER_CONS_SECRET)
         auth.set_access_token(AUTH.TWITTER_ACC_TOKEN, AUTH.TWITTER_ACC_SECRET)
         api = tweepy.API(auth)
-        new_tweets = api.user_timeline(screen_name = self.name, count=20)
+        new_tweets = api.user_timeline(screen_name = self.name, count=10)
         ret = []
         for i in new_tweets:
             ret.append({

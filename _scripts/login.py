@@ -11,5 +11,5 @@ def login():
     print(r.content)
 
 if __name__ == '__main__':
-    #register()
+    register()
     login()

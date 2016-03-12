@@ -17,6 +17,7 @@ def login(request):
         user = models.User.objects.filter(username=username, password=password)
         if len(user) == 1:
             return HttpResponse(json.dumps({'success': 'true'}), content_type='application/json')
+            # TODO: return back more data
         else:
             return functions.auth_failed()
     else:

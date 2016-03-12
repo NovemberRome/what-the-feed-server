@@ -19,10 +19,15 @@ class Link(models.Model):
     network = models.IntegerField()
 
 
-class SearchString(models.Model):
+class UserSubscription(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    link = models.ForeignKey(Link, on_delete=models.CASCADE)
     query = models.CharField(max_length=100)
+
+
+class SubscriptionLink(models.Model):
+    userSub = models.ForeignKey(UserSubscription, on_delete=models.CASCADE)
+    link = models.ForeignKey(Link, on_delete=models.CASCADE)
 
 
 class Cache(models.Model):

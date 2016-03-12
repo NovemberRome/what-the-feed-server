@@ -35,15 +35,14 @@ def register(request):
         email = request.POST.get('email')
         firstName = request.POST.get('firstname')
         lastName = request.POST.get('lastname')
-        id = -1
         try:
             user = models.User(username = username, password = password, email=email,
                     firstName = firstName, lastName = lastName)
             user.save()
-            id = user.id
+            uid = user.id
             resp = functions.Response()
             resp.add('username', username)
-            resp.add('id', id)
+            resp.add('id', uid)
             return resp.respond()
         except Exception as e:
             print(e)

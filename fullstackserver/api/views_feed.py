@@ -46,7 +46,18 @@ Sets/Changes a Subscription
 """
 @csrf_exempt
 def changeSubscription(request):
-    return functions.invalid_option()
+    if request.method != 'POST':
+        return functions.invalid_option()
+    uid = request.POST.get('id')
+    password = request.POST.get('password')
+    subsId = request.POST.get('subsid')
+    pids = request.POST.get('pids')
+    curPids = SubscriptionLink.objects.filter(UserSubscription.objects.get(id = subsId))
+    # delete can be buggy
+    for i in curPids:
+        if i.link.id not in pids:
+            i.delete()
+    return functions.send_response()
 
 
 """

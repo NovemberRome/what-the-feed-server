@@ -1,7 +1,20 @@
 from django.http import HttpResponse
 import json
+from .models import User
 
 
+def checkUserCredentials(request):
+    uid = request.POST.get('id')
+    password = request.POST.get('password')
+    user = User.objects.filter(id=uid, password=password)
+    if len(user) == 0:
+        return False
+    else:
+        return True
+
+"""
+Responses
+"""
 def auth_failed(code = 302, msg = 'Authentication Problem'):
     return send_response(code, msg)
 

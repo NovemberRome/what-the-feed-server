@@ -48,10 +48,11 @@ Sets/Changes a Subscription
 def changeSubscription(request):
     if request.method != 'POST':
         return functions.invalid_option()
-    uid = request.POST.get('id')
-    password = request.POST.get('password')
     subsId = request.POST.get('subsid')
     pids = request.POST.get('pids')
+    if not functions.checkUserCredentials(request):
+        functions.auth_failed()
+    # auth passed
     curPids = SubscriptionLink.objects.filter(UserSubscription.objects.get(id = subsId))
     # delete can be buggy
     for i in curPids:

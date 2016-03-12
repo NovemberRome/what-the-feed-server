@@ -3,8 +3,8 @@ from django.utils import timezone
 
 class User(models.Model):
     id = models.AutoField(primary_key=True)
-    password = models.CharField()
-    username = models.CharField(max_length=20)
+    password = models.CharField(null=False, max_length=100)
+    username = models.CharField(max_length=20, null=False)
     email = models.EmailField()
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
@@ -15,17 +15,17 @@ class User(models.Model):
 
 class Link(models.Model):
     pid = models.AutoField(primary_key=True)
-    link = models.CharField()
+    link = models.TextField()
     network = models.IntegerField()
 
 
 class SearchString(models.Model):
-    id = models.ForeignKey(User, on_delete=models.CASCADE)
-    pid = models.ForeignKey(Link, on_delete=models.CASCADE)
-    query = models.CharField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    link = models.ForeignKey(Link, on_delete=models.CASCADE)
+    query = models.CharField(max_length=100)
 
 
 class Cache(models.Model):
-    pid = models.ForeignKey(Link, on_delete=models.CASCADE)
+    link = models.ForeignKey(Link, on_delete=models.CASCADE)
     data = models.TextField()
     expiry = models.DateTimeField()

@@ -3,6 +3,7 @@ from django.shortcuts import render
 import json
 from django.views.decorators.csrf import csrf_exempt
 from . import functions
+from . import models
 
 def login(request):
     data = {'avi': 'aryan'}
@@ -18,6 +19,15 @@ def register(request):
         firstName = request.POST.get('firstname', '')
         lastName = request.POST.get('lastname', '')
         #render(request, 'simpleview.html', {username : 'value'})
-        return HttpResponse(json.dumps({'username': username}), content_type='application/json')
+        id = -1
+
+        try:
+            user = models.User(username = username, password = password, email=email,
+                                       firstName = firstName, lastName = lastName)
+            user.save()
+            id = user.id
+        except Exception as e:
+            print(e)
+        return HttpResponse(json.dumps({'username': username, 'id': id}), content_type='application/json')
     else:
         return functions.invalid_option()

@@ -5,11 +5,27 @@ from django.views.decorators.csrf import csrf_exempt
 from . import functions
 from . import models
 
+
+"""
+Login a user
+"""
+@csrf_exempt
 def login(request):
-    data = {'avi': 'aryan'}
-    return HttpResponse(data, content_type='application/json')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = models.User.objects.filter(username=username, password=password)
+        if len(user) == 1:
+            return HttpResponse(json.dumps({'success': 'true'}), content_type='application/json')
+        else:
+            return functions.auth_failed()
+    else:
+        return functions.invalid_option()
 
 
+"""
+Registers a user
+"""
 @csrf_exempt
 def register(request):
     if request.method == 'POST':

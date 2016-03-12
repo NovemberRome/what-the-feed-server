@@ -10,10 +10,10 @@ import json
 
 class TumblrFeed:
 
-    name = ''
+    name = 'aviaryan'
 
     def __init__(self, name):
-        self.name = name
+        self.name = name + '.tumblr.com'
 
     def getFeeds(self):
         url = 'https://api.tumblr.com/v2/blog/' + self.name + '/posts/text?' + \
@@ -35,5 +35,5 @@ class TumblrFeed:
 
 
 if __name__=='__main__':
-    x = TumblrFeed('aviaryan.tumblr.com')
+    x = TumblrFeed('aviaryan')
     x.getFeeds()

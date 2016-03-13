@@ -26,6 +26,14 @@ class TwitterFeed:
         new_tweets = api.user_timeline(screen_name = self.name, count=10)
         ret = []
         for i in new_tweets:
+            # get photo if there
+            imageUrl = None
+            for media in i.entities.get("media",[{}]):
+                # checks if there is any media-entity
+                if media.get("type",None) == "photo":
+                    # checks if the entity is of the type "photo"
+                    imageUrl = media["media_url"]
+            # done
             ret.append({
                 'subsid': subsid,
                 'pid': self.link.pid,
@@ -33,7 +41,7 @@ class TwitterFeed:
                 'name': self.name,
                 'content': i.text,
                 'time': str(i.created_at), # tweepy already takes care of that
-                'imageurl': None,
+                'imageurl': imageUrl,
                 'url': 'https://twitter.com/statuses/' + i.id_str
             })
         return ret
@@ -55,8 +63,9 @@ def getName(link):
     return name
 
 if __name__ == '__main__':
-    # a = TwitterFeed('aviaryan123')
+    pass
+    # a = TwitterFeed
     # a.getFeeds()
-    links = getLinks('Sachin Tendulkar')
-    names = getNames(links)
-    print(names)
+    # links = getLinks('Sachin Tendulkar')
+    # names = getNames(links)
+    # print(names)

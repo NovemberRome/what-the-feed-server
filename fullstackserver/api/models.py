@@ -36,6 +36,9 @@ class SubscriptionLink(models.Model):
     userSub = models.ForeignKey(UserSubscription, on_delete=models.CASCADE)
     link = models.ForeignKey(Link, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return 'Subscription' + str(self.userSub.id) + ' ' + self.link.network + ' ' + self.link.name
+
 
 class Cache(models.Model):
     link = models.ForeignKey(Link, on_delete=models.CASCADE)

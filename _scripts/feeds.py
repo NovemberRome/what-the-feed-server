@@ -1,9 +1,10 @@
 import requests
 
 url = 'http://10.100.2.81:5123/api/feed/'
+#url = 'http://whatthefeed.herokuapp.com/api/feed/'
 
 def addsubs():
-    r = requests.post(url + 'addsubscription', data = {'id': 1, 'password': 'something', 'searchparam': 'Batman vs Superman'})
+    r = requests.post(url + 'addsubscription', data = {'id': 2, 'password': 'a', 'searchparam': 'Artificial Intelligence'})
     print(r.content)
 
 def delsubs():
@@ -19,7 +20,7 @@ def getmainfeed():
     print(r.content)
 
 if __name__ == '__main__':
-    #addsubs()
+    addsubs()
     #delsubs()
     #getfeed()
-    getmainfeed()
+    #getmainfeed()

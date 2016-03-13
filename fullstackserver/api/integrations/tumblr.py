@@ -63,6 +63,7 @@ def getName(link):
 if __name__=='__main__':
     # x = TumblrFeed('aviaryan')
     # x.getFeeds()
-    links = getLinks('FC Barcelona')
-    names = getNames(links)
-    print(names)
+    pass
+    # links = getLinks('FC Barcelona')
+    # names = getNames(links)
+    # print(names)

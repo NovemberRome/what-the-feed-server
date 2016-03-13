@@ -22,6 +22,7 @@ def login(request):
             resp.add('firstname', cuser.firstName)
             resp.add('lastname', cuser.lastName)
             resp.add('email', cuser.email)
+            resp.add('username', cuser.username)
             subscriptions = UserSubscription.objects.filter(user=cuser)
             subs = []
             for i in subscriptions:

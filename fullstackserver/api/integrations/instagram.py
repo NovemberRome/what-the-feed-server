@@ -70,8 +70,9 @@ def getName(link):
     return name
 
 if __name__ == '__main__':
+    pass
     # x = InstagramFeed('aviaryan123')
     # x.getFeeds()
-    links = getLinks('Modern Life')
-    names = getNames(links)
-    print(names)
+    # links = getLinks('Modern Life')
+    # names = getNames(links)
+    # print(names)

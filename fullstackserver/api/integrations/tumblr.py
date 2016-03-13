@@ -34,6 +34,7 @@ class TumblrFeed:
         ret = []
         for i in posts:
             ret.append({
+                'pid': self.link.id,
                 'network': self.link.network,
                 'name': self.link.name,
                 'content': i['body'][:200],

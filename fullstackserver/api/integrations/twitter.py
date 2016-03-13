@@ -27,6 +27,7 @@ class TwitterFeed:
         ret = []
         for i in new_tweets:
             ret.append({
+                'pid': self.link.id,
                 'network': self.link.network,
                 'name': self.name,
                 'content': i.text,

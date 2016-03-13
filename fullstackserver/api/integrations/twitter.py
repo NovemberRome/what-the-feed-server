@@ -26,7 +26,7 @@ class TwitterFeed:
         ret = []
         for i in new_tweets:
             ret.append({
-                'text': i.text,
+                'content': i.text,
                 'time': str(i.created_at), # tweepy already takes care of that
                 'imageurl': None,
                 'url': 'https://twitter.com/statuses/' + i.id_str

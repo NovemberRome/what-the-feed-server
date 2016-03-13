@@ -3,7 +3,7 @@ from django.shortcuts import render
 import json
 from django.views.decorators.csrf import csrf_exempt
 from . import functions
-from . import models
+from .models import *
 
 
 """
@@ -14,7 +14,7 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = models.User.objects.filter(username=username, password=password)
+        user = User.objects.filter(username=username, password=password)
         if len(user) == 1:
             resp = functions.Response()
             cuser = user[0]
@@ -22,7 +22,23 @@ def login(request):
             resp.add('firstname', cuser.firstName)
             resp.add('lastname', cuser.lastName)
             resp.add('email', cuser.email)
-            resp.add('subscriptions', [])
+            subscriptions = UserSubscription.objects.filter(user=cuser)
+            subs = []
+            for i in subscriptions:
+                d = {}
+                d['subsid'] = i.id
+                d['searchparam'] = i.searchParam
+                d['links'] = []
+                subLinks = SubscriptionLink.objects.filter(userSub=i)
+                for row in subLinks:
+                    d2 = dict()
+                    d2['url'] = row.link.url
+                    d2['name'] = row.link.name
+                    d2['pid'] = row.link.pid
+                    d['links'].append(d2)
+                subs.append(d)
+
+            resp.add('subscriptions', subs)
             return resp.respond()
         else:
             return functions.auth_failed()
@@ -42,7 +58,7 @@ def register(request):
         firstName = request.POST.get('firstname')
         lastName = request.POST.get('lastname')
         try:
-            user = models.User(username = username, password = password, email=email,
+            user = User(username = username, password = password, email=email,
                     firstName = firstName, lastName = lastName)
             user.save()
             uid = user.id

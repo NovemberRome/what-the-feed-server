@@ -6,8 +6,10 @@ import re
 import dateparser
 try:
     from .utils import *
+    from .googlesearch import *
 except SystemError:
     from utils import *
+    from googlesearch import *
 
 
 class InstagramFeed:
@@ -43,6 +45,11 @@ class InstagramFeed:
             })
         return ret
 
+def getLinks(searchterm):
+    links = googleSearchLinks('site:instagram.com ' + searchterm + ' - instagram', r'http.*?\/\/[^\/]*?instagram\.com\/[^\/]+\/?$')
+    return links
+
 if __name__ == '__main__':
-    x = InstagramFeed('aviaryan123')
-    x.getFeeds()
+    # x = InstagramFeed('aviaryan123')
+    # x.getFeeds()
+    print(getLinks('Modern Life'))

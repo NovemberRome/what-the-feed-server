@@ -2,9 +2,11 @@ import tweepy
 try:
     from .auth import AUTH
     from .utils import *
+    from .googlesearch import *
 except SystemError:
     from auth import AUTH
     from utils import *
+    from googlesearch import *
 # TODO: Fix tweet with image
 
 class TwitterFeed:
@@ -29,6 +31,11 @@ class TwitterFeed:
             })
         return ret
 
+def getLinks(searchterm):
+    links = googleSearchLinks(searchterm + ' - Twitter', r'http.*?\/\/[^\/]*?twitter\.com\/[^\/]+\/?$')
+    return links
+
 if __name__ == '__main__':
-    a = TwitterFeed('aviaryan123')
-    a.getFeeds()
+    # a = TwitterFeed('aviaryan123')
+    # a.getFeeds()
+    print(getLinks('Sachin Tendulkar'))

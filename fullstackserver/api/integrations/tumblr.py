@@ -8,9 +8,11 @@ import json
 try:
     from .auth import AUTH
     from .utils import *
+    from .googlesearch import *
 except SystemError:
     from auth import AUTH
     from utils import *
+    from googlesearch import *
 
 class TumblrFeed:
 

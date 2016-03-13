@@ -39,7 +39,11 @@ class TumblrFeed:
             })
         return ret
 
+def getLinks(searchterm):
+    links = googleSearchLinks(searchterm + ' - Tumblr', r'http.*?\/\/[^\/]*?tumblr\.com\/?$')
+    return links
 
 if __name__=='__main__':
-    x = TumblrFeed('aviaryan')
-    x.getFeeds()
+    # x = TumblrFeed('aviaryan')
+    # x.getFeeds()
+    print(getLinks('FC Barcelona'))

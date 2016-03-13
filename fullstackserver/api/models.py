@@ -16,7 +16,7 @@ class User(models.Model):
 class Link(models.Model):
     pid = models.AutoField(primary_key=True)
     url = models.TextField()
-    network = models.IntegerField()
+    network = models.CharField(max_length=20)
     name = models.CharField(max_length=50)
 
 

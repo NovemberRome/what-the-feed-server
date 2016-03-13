@@ -34,7 +34,7 @@ def getLinksForNetwork(uSub, networkClass, networkStr):
         sl = SubscriptionLink(userSub=uSub, link=link)
         sl.save()
         count+=1
-        if count == 3:
+        if count == 2:
             break
 
 """
@@ -44,11 +44,27 @@ returns it
 def getCacheForSubs(subsid):
     uSub = UserSubscription.objects.get(id=subsid)
     subLinks = SubscriptionLink.objects.filter(userSub=uSub)
+    feedData = []
     for i in subLinks:
         if i.link.network == 'twitter':
-            f = twitter.TwitterFeed(i.link.name)
-            data = json.dumps(f.getFeeds())
-            Cache.objects.filter(link=i.link).delete() # delete old
-            cache = Cache(data=data, link=i.link, expiry=str(datetime.datetime.now()))
-            cache.save()
-    return
+            feedData += getCacheForNetwork(i.link, twitter.TwitterFeed)
+        elif i.link.network == 'instagram':
+            feedData += getCacheForNetwork(i.link, instagram.InstagramFeed)
+        elif i.link.network == 'tumblr':
+            feedData += getCacheForNetwork(i.link, tumblr.TumblrFeed)
+        else:
+            pass
+    return feedData
+
+def getCacheForNetwork(link, networkClass):
+    curCaches = Cache.objects.filter(link=link)
+    if len(curCaches) > 0:
+        data = curCaches[0].data
+        datalist = json.loads(data)
+    else:
+        f = networkClass(link.name)
+        datalist = f.getFeeds()[:]
+        data = json.dumps(datalist)
+        cache = Cache(data=data, link=link, expiry=str(datetime.datetime.now()))
+        cache.save()
+    return datalist

@@ -30,6 +30,7 @@ class InstagramFeed:
         #tree = ET.parse('instagram.xml')
         #root = tree.getroot()
         ret = []
+        count = 0
         for item in root.iter('item'):
             text = item.find('title').text
             time = timeToStr(item.find('pubDate').text)
@@ -43,6 +44,9 @@ class InstagramFeed:
                 'imageUrl': imageUrl,
                 'url': url
             })
+            count += 1
+            if count > 10:
+                break
         return ret
 
 def getLinks(searchterm):

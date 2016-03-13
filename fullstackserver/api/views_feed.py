@@ -22,8 +22,10 @@ def getFeed(request):
     if request.method != 'POST':
         return functions.invalid_option()
     subsid = request.POST.get('subsid')
-    feeds.getCacheForSubs(subsid)
-    return functions.invalid_option()
+    feedData = feeds.getCacheForSubs(subsid)
+    resp = functions.Response()
+    resp.add('feeds', feedData)
+    return resp.respond()
 
 
 """

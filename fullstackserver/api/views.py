@@ -17,6 +17,11 @@ def login(request):
         user = models.User.objects.filter(username=username, password=password)
         if len(user) == 1:
             resp = functions.Response()
+            cuser = user[0]
+            resp.add('id', cuser.id)
+            resp.add('firstname', cuser.firstName)
+            resp.add('lastname', cuser.lastName)
+            resp.add('email', cuser.email)
             resp.add('subscriptions', [])
             return resp.respond()
         else:

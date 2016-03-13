@@ -33,6 +33,7 @@ class TumblrFeed:
         ret = []
         for i in posts:
             ret.append({
+                'name': self.name,
                 'content': i['body'][:200],
                 'time': timeToStr(i['date']),
                 'imageurl': None,

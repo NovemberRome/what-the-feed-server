@@ -39,6 +39,7 @@ class InstagramFeed:
             images = re.findall(r'https:\/\/.*cdninsta.*?(?=\')', imageUrl)
             imageUrl = images[0]
             ret.append({
+                'name': self.name,
                 'content': text,
                 'time': time,
                 'imageurl': imageUrl,

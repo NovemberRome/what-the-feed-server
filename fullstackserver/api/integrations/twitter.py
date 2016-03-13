@@ -40,13 +40,17 @@ def getLinks(searchterm):
 def getNames(links):
     names = []
     for i in links:
-        name = re.sub(r'.*twitter.com\/', '', i)
-        name = name.replace('/', '')
-        names.append(name)
+        names.append(getName(i))
     return names
+
+def getName(link):
+    name = re.sub(r'.*twitter.com\/', '', link)
+    name = name.replace('/', '')
+    return name
 
 if __name__ == '__main__':
     # a = TwitterFeed('aviaryan123')
     # a.getFeeds()
     links = getLinks('Sachin Tendulkar')
-    print(getNames(links))
+    names = getNames(links)
+    print(names)

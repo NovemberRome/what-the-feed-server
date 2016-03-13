@@ -49,7 +49,20 @@ def getLinks(searchterm):
     links = googleSearchLinks('site:instagram.com ' + searchterm + ' - instagram', r'http.*?\/\/[^\/]*?instagram\.com\/[^\/]+\/?$')
     return links
 
+def getNames(links):
+    names = []
+    for i in links:
+        names.append(getName(i))
+    return names
+
+def getName(link):
+    name = re.sub(r'.*instagram.com\/', '', link)
+    name = name.replace('/', '')
+    return name
+
 if __name__ == '__main__':
     # x = InstagramFeed('aviaryan123')
     # x.getFeeds()
-    print(getLinks('Modern Life'))
+    links = getLinks('Modern Life')
+    names = getNames(links)
+    print(names)

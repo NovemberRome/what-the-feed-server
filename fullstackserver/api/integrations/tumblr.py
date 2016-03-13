@@ -35,7 +35,7 @@ class TumblrFeed:
             ret.append({
                 'text': i['body'][:200],
                 'time': timeToStr(i['date']),
-                'imageUrl': None,
+                'imageurl': None,
                 'url': i['post_url']
             })
         return ret

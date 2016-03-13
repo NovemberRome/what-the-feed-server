@@ -28,7 +28,7 @@ class TwitterFeed:
             ret.append({
                 'text': i.text,
                 'time': str(i.created_at), # tweepy already takes care of that
-                'imageUrl': None,
+                'imageurl': None,
                 'url': 'https://twitter.com/statuses/' + i.id_str
             })
         return ret

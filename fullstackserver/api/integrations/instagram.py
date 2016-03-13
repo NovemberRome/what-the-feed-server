@@ -41,7 +41,7 @@ class InstagramFeed:
             ret.append({
                 'text': text,
                 'time': time,
-                'imageUrl': imageUrl,
+                'imageurl': imageUrl,
                 'url': url
             })
             count += 1

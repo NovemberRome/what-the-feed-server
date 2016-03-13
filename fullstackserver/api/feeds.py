@@ -37,6 +37,17 @@ def getLinksForNetwork(uSub, networkClass, networkStr):
         if count == 2:
             break
 
+
+"""
+Gets feed for user
+"""
+def getCacheForUser(user):
+    usubs = UserSubscription.objects.filter(user=user)
+    feed = []
+    for i in usubs:
+        feed += getCacheForSubs(i.id)
+    return feed
+
 """
 Makes cache for a subscription if needed
 returns it
@@ -56,6 +67,7 @@ def getCacheForSubs(subsid):
             pass
     return feedData
 
+# TODO: refresh cache by time
 def getCacheForNetwork(link, networkClass):
     curCaches = Cache.objects.filter(link=link)
     if len(curCaches) > 0:

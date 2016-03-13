@@ -14,7 +14,12 @@ def getfeed():
     r = requests.post(url + 'getfeed', data = {'id': 1, 'password': 'something', 'subsid': 1})
     print(r.content)
 
+def getmainfeed():
+    r = requests.post(url + 'getmainfeed', data = {'id': 1, 'password': 'something', 'subsid': 1})
+    print(r.content)
+
 if __name__ == '__main__':
     #addsubs()
     #delsubs()
-    getfeed()
+    #getfeed()
+    getmainfeed()

@@ -3,7 +3,7 @@
 import requests
 import xml.etree.ElementTree as ET
 import re
-import dateparser
+
 try:
     from .utils import *
     from .googlesearch import *

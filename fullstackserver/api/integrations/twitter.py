@@ -1,4 +1,6 @@
 import tweepy
+import re
+
 try:
     from .auth import AUTH
     from .utils import *
@@ -35,7 +37,16 @@ def getLinks(searchterm):
     links = googleSearchLinks(searchterm + ' - Twitter', r'http.*?\/\/[^\/]*?twitter\.com\/[^\/]+\/?$')
     return links
 
+def getNames(links):
+    names = []
+    for i in links:
+        name = re.sub(r'.*twitter.com\/', '', i)
+        name = name.replace('/', '')
+        names.append(name)
+    return names
+
 if __name__ == '__main__':
     # a = TwitterFeed('aviaryan123')
     # a.getFeeds()
-    print(getLinks('Sachin Tendulkar'))
+    links = getLinks('Sachin Tendulkar')
+    print(getNames(links))

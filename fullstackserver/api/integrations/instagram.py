@@ -16,8 +16,9 @@ class InstagramFeed:
 
     name = 'aviaryan123'
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, link):
+        self.name = link.name
+        self.link = link
 
     def getFeeds(self):
         return self.getUnofficialFeeds()
@@ -39,6 +40,7 @@ class InstagramFeed:
             images = re.findall(r'https:\/\/.*cdninsta.*?(?=\')', imageUrl)
             imageUrl = images[0]
             ret.append({
+                'network': self.link.network,
                 'name': self.name,
                 'content': text,
                 'time': time,

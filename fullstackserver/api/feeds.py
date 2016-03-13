@@ -74,7 +74,7 @@ def getCacheForNetwork(link, networkClass):
         data = curCaches[0].data
         datalist = json.loads(data)
     else:
-        f = networkClass(link.name)
+        f = networkClass(link)
         datalist = f.getFeeds()[:]
         data = json.dumps(datalist)
         cache = Cache(data=data, link=link, expiry=str(datetime.datetime.now()))

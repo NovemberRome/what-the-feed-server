@@ -15,8 +15,9 @@ class TwitterFeed:
 
     name = 'aviaryan123'
 
-    def __init__(self, username):
-        self.name = username
+    def __init__(self, link):
+        self.name = link.name
+        self.link = link
 
     def getFeeds(self):
         auth = tweepy.OAuthHandler(AUTH.TWITTER_CONS_KEY, AUTH.TWITTER_CONS_SECRET)
@@ -26,6 +27,7 @@ class TwitterFeed:
         ret = []
         for i in new_tweets:
             ret.append({
+                'network': self.link.network,
                 'name': self.name,
                 'content': i.text,
                 'time': str(i.created_at), # tweepy already takes care of that

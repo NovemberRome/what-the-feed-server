@@ -19,8 +19,9 @@ class TumblrFeed:
 
     name = 'aviaryan'
 
-    def __init__(self, name):
-        self.name = name + '.tumblr.com'
+    def __init__(self, link):
+        self.name = link.name + '.tumblr.com'
+        self.link = link
 
     def getFeeds(self):
         url = 'https://api.tumblr.com/v2/blog/' + self.name + '/posts/text?' + \
@@ -33,7 +34,8 @@ class TumblrFeed:
         ret = []
         for i in posts:
             ret.append({
-                'name': self.name,
+                'network': self.link.network,
+                'name': self.link.name,
                 'content': i['body'][:200],
                 'time': timeToStr(i['date']),
                 'imageurl': None,

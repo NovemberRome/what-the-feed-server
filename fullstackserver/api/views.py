@@ -35,6 +35,7 @@ def login(request):
                     d2['url'] = row.link.url
                     d2['name'] = row.link.name
                     d2['pid'] = row.link.pid
+                    d2['network'] = row.link.network
                     d['links'].append(d2)
                 subs.append(d)
 
@@ -68,6 +69,6 @@ def register(request):
             return resp.respond()
         except Exception as e:
             print(e)
-            return functions.error_happened()
+            return functions.user_exists()
     else:
         return functions.invalid_option()

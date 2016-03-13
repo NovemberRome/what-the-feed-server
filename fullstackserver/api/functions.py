@@ -24,6 +24,9 @@ def invalid_option(code = 404, msg = 'Invalid Option'):
 def error_happened(code = 400, msg = 'Bad things have happened'):
     return send_response(code, msg)
 
+def user_exists(code = 301, msg = 'User already exists'):
+    return send_response(code, msg)
+
 def send_response(code = 200, msg = 'OK'):
     a = Response(code)
     a.add('message', msg)

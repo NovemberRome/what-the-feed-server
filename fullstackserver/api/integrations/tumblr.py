@@ -43,7 +43,20 @@ def getLinks(searchterm):
     links = googleSearchLinks(searchterm + ' - Tumblr', r'http.*?\/\/[^\/]*?tumblr\.com\/?$')
     return links
 
+def getNames(links):
+    names = []
+    for i in links:
+        names.append(getName(i))
+    return names
+
+def getName(link):
+    name = re.sub('http.*\/\/', '', link)
+    name = re.sub('\.tumblr.*', '', name)
+    return name
+
 if __name__=='__main__':
     # x = TumblrFeed('aviaryan')
     # x.getFeeds()
-    print(getLinks('FC Barcelona'))
+    links = getLinks('FC Barcelona')
+    names = getNames(links)
+    print(names)

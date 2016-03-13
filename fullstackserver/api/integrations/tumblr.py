@@ -23,7 +23,7 @@ class TumblrFeed:
         self.name = link.name + '.tumblr.com'
         self.link = link
 
-    def getFeeds(self):
+    def getFeeds(self, subsid):
         url = 'https://api.tumblr.com/v2/blog/' + self.name + '/posts/text?' + \
               'api_key=' + AUTH.TUMBLR_CONS_KEY + '&limit=10' + '&notes_info=False' + '&filter=text' + \
             '&type=text'
@@ -34,7 +34,8 @@ class TumblrFeed:
         ret = []
         for i in posts:
             ret.append({
-                'pid': self.link.id,
+                'subsid': subsid,
+                'pid': self.link.pid,
                 'network': self.link.network,
                 'name': self.link.name,
                 'content': i['body'][:200],

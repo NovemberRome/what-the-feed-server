@@ -19,7 +19,7 @@ class TwitterFeed:
         self.name = link.name
         self.link = link
 
-    def getFeeds(self):
+    def getFeeds(self, subsid):
         auth = tweepy.OAuthHandler(AUTH.TWITTER_CONS_KEY, AUTH.TWITTER_CONS_SECRET)
         auth.set_access_token(AUTH.TWITTER_ACC_TOKEN, AUTH.TWITTER_ACC_SECRET)
         api = tweepy.API(auth)
@@ -27,7 +27,8 @@ class TwitterFeed:
         ret = []
         for i in new_tweets:
             ret.append({
-                'pid': self.link.id,
+                'subsid': subsid,
+                'pid': self.link.pid,
                 'network': self.link.network,
                 'name': self.name,
                 'content': i.text,

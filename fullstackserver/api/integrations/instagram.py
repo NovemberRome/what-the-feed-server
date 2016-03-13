@@ -20,10 +20,10 @@ class InstagramFeed:
         self.name = link.name
         self.link = link
 
-    def getFeeds(self):
-        return self.getUnofficialFeeds()
+    def getFeeds(self, subsid):
+        return self.getUnofficialFeeds(subsid)
 
-    def getUnofficialFeeds(self):
+    def getUnofficialFeeds(self, subsid):
         url = 'http://iconosquare.com/feed/' + self.name
         r = requests.get(url)
         tree = ET.fromstring(r.content.decode(encoding='utf-8'))
@@ -40,7 +40,8 @@ class InstagramFeed:
             images = re.findall(r'https:\/\/.*cdninsta.*?(?=\')', imageUrl)
             imageUrl = images[0]
             ret.append({
-                'pid': self.link.id,
+                'subsid': subsid,
+                'pid': self.link.pid,
                 'network': self.link.network,
                 'name': self.name,
                 'content': text,

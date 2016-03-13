@@ -58,24 +58,24 @@ def getCacheForSubs(subsid):
     feedData = []
     for i in subLinks:
         if i.link.network == 'twitter':
-            feedData += getCacheForNetwork(i.link, twitter.TwitterFeed)
+            feedData += getCacheForNetwork(i.link, twitter.TwitterFeed, subsid)
         elif i.link.network == 'instagram':
-            feedData += getCacheForNetwork(i.link, instagram.InstagramFeed)
+            feedData += getCacheForNetwork(i.link, instagram.InstagramFeed, subsid)
         elif i.link.network == 'tumblr':
-            feedData += getCacheForNetwork(i.link, tumblr.TumblrFeed)
+            feedData += getCacheForNetwork(i.link, tumblr.TumblrFeed, subsid)
         else:
             pass
     return feedData
 
 # TODO: refresh cache by time
-def getCacheForNetwork(link, networkClass):
+def getCacheForNetwork(link, networkClass, subsid):
     curCaches = Cache.objects.filter(link=link)
     if len(curCaches) > 0:
         data = curCaches[0].data
         datalist = json.loads(data)
     else:
         f = networkClass(link)
-        datalist = f.getFeeds()[:]
+        datalist = f.getFeeds(subsid)[:]
         data = json.dumps(datalist)
         cache = Cache(data=data, link=link, expiry=str(datetime.datetime.now()))
         cache.save()

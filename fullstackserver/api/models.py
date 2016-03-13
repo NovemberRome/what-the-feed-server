@@ -43,4 +43,7 @@ class SubscriptionLink(models.Model):
 class Cache(models.Model):
     link = models.ForeignKey(Link, on_delete=models.CASCADE)
     data = models.TextField()
-    expiry = models.DateTimeField()
+    expiry = models.CharField(max_length=40)
+
+    def __str__(self):
+        return 'Cache for ' + self.link.network + ' ' + self.link.name

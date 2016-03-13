@@ -19,6 +19,10 @@ Gets a Subscription's feed
 """
 @csrf_exempt
 def getFeed(request):
+    if request.method != 'POST':
+        return functions.invalid_option()
+    subsid = request.POST.get('subsid')
+    feeds.getCacheForSubs(subsid)
     return functions.invalid_option()
 
 

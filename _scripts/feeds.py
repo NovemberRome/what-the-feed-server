@@ -10,11 +10,11 @@ def delsubs():
     r = requests.post(url + 'deletesubscription', data = {'id': 1, 'password': 'something', 'subsid': 2})
     print(r.content)
 
-def login():
-    r = requests.post(url + 'login', data = {'username': 'aviaryan', 'password': 'something'})
+def getfeed():
+    r = requests.post(url + 'getfeed', data = {'id': 1, 'password': 'something', 'subsid': 1})
     print(r.content)
 
 if __name__ == '__main__':
-    addsubs()
+    #addsubs()
     #delsubs()
-    #login()
+    getfeed()

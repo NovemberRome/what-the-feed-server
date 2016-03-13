@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://localhost/api/feed/'
+url = 'http://10.100.2.81:5123/api/feed/'
 
 def addsubs():
     r = requests.post(url + 'addsubscription', data = {'id': 1, 'password': 'something', 'searchparam': 'Batman vs Superman'})
@@ -16,5 +16,5 @@ def login():
 
 if __name__ == '__main__':
     addsubs()
-    delsubs()
+    #delsubs()
     #login()

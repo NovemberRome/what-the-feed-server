@@ -5,6 +5,7 @@
 
 import requests
 import json
+import re
 try:
     from .auth import AUTH
     from .utils import *
@@ -50,8 +51,8 @@ def getNames(links):
     return names
 
 def getName(link):
-    name = re.sub('http.*\/\/', '', link)
-    name = re.sub('\.tumblr.*', '', name)
+    name = re.sub(r'http.*\/\/', '', link)
+    name = re.sub(r'\.tumblr.*', '', name)
     return name
 
 if __name__=='__main__':

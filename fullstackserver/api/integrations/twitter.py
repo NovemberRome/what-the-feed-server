@@ -35,6 +35,7 @@ class TwitterFeed:
 
 def getLinks(searchterm):
     links = googleSearchLinks(searchterm + ' - Twitter', r'http.*?\/\/[^\/]*?twitter\.com\/[^\/]+\/?$')
+    print(links)
     return links
 
 def getNames(links):

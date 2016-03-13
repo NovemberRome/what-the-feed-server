@@ -4,6 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from . import functions
 from .models import *
+from . import feeds
 
 """
 Gets the Main feed for an user
@@ -35,6 +36,7 @@ def addSubscription(request):
     try:
         sub = UserSubscription(user=User.objects.get(id = uid, password=password), searchParam=searchParam)
         sub.save()
+        feeds.addLinksForNewSub(sub)
     except Exception as e:
         print(e)
         return functions.auth_failed()

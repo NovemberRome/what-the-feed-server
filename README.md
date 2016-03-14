@@ -15,6 +15,11 @@ This was team FullStack's project for IIITV Hackathon 2016. Team members were -
 Social networks that were integrated at this point are Twitter, Instagram and Tumblr.
 
 
+## Documentation
+
+Some documentation of the API the server provides is at [/wiki](wiki)
+
+
 ## Future Plans
 
 Let's see.

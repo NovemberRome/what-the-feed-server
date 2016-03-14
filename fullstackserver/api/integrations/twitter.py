@@ -9,7 +9,7 @@ except SystemError:
     from auth import AUTH
     from utils import *
     from googlesearch import *
-# TODO: Fix tweet with image
+
 
 class TwitterFeed:
 

@@ -10,7 +10,7 @@ This was team FullStack's project for IIITV Hackathon 2016. Team members were -
 * Pratyush Singh [@singh-pratyush96](https://github.com/singh-pratyush96)
 * Raju Koushik [@RajuKoushik](https://github.com/RajuKoushik)
 * Vaibhav
-* Vishal
+* Vikas
 
 Social networks that were integrated at this point are Twitter, Instagram and Tumblr.
 

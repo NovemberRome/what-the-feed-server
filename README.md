@@ -17,7 +17,7 @@ Social networks that were integrated at this point are Twitter, Instagram and Tu
 
 ## Documentation
 
-Some documentation of the API the server provides is at [/wiki](wiki)
+Some documentation of the API the server provides is in [Wiki](https://github.com/iiitv/hackathon-fullstack-server/wiki)
 
 
 ## Future Plans

@@ -12,6 +12,8 @@ This was team FullStack's project for IIITV Hackathon 2016. Team members were -
 * Vaibhav
 * Vikas
 
+#### It was chosen the best project in Tech category at the Hackathon.
+
 Social networks that were integrated at this point are Twitter, Instagram and Tumblr.
 
 

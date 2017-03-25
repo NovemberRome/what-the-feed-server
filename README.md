@@ -7,7 +7,7 @@ What The Feed is a social media aggregration platform that helps you follow rela
 
 This was team FullStack's project for IIITV Hackathon 2016. Team members were - 
 * Avi Aryan [@aviaryan](https://github.com/aviaryan)
-* Pratyush Singh [@singh-pratyush96](https://github.com/singh-pratyush96)
+* Pratyush Singh [@singhpratyush](https://github.com/singhpratyush)
 * Raju Koushik [@RajuKoushik](https://github.com/RajuKoushik)
 * Vaibhav
 * Vikas
